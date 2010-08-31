@@ -8,7 +8,7 @@ module Yogo
     class Property
       include DataMapper::Resource
 
-      property  :id,      UUID,         :key => true, :default => lambda { Configuration.random_uuid }
+      property  :id,      UUID,         :key => true, :default => lambda { |p,r| Configuration.random_uuid }
       property  :name,    String,       :required => true
       property  :options, Yaml,         :default => {}.to_yaml
       property  :type,    Discriminator
