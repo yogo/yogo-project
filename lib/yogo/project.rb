@@ -4,7 +4,7 @@ require 'yogo/collection'
 
 module Yogo
   class Project
-    include DataMapper::Resource
+    include ::DataMapper::Resource
     
     property :id,               UUID,       :key => true, :default => lambda { UUIDTools::UUID.timestamp_create }
     property :name,             String,     :required => true

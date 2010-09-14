@@ -6,7 +6,7 @@ require 'yogo/configuration'
 module Yogo
   module Collection
     class Property
-      include DataMapper::Resource
+      include ::DataMapper::Resource
 
       property  :id,      UUID,         :key => true, :default => lambda { Configuration.random_uuid }
       property  :name,    String,       :required => true
@@ -87,7 +87,7 @@ module Yogo
       
       class ManyToMany < self
         def add_to_model(model)
-          super(model, Infinity, :through => DataMapper::Resource)
+          super(model, Infinity, :through => ::DataMapper::Resource)
         end
       end
       

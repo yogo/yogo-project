@@ -11,7 +11,7 @@ require 'yogo/collection/property'
 module Yogo
   module Collection
     class Data
-      include DataMapper::Resource
+      include ::DataMapper::Resource
       
       
       property :id,               UUID,       :key => true, :default => lambda { Yogo::Configuration.random_uuid }

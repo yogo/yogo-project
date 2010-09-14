@@ -8,7 +8,7 @@ shared_examples_for "All Collection Managers" do
     end
     
     it "should be a datamapper model" do
-      @manager_class.should be_a_kind_of(DataMapper::Model)
+      @manager_class.should be_a_kind_of(::DataMapper::Model)
     end
   end
     

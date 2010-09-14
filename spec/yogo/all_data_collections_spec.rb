@@ -3,7 +3,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 shared_examples_for "All Data Collections" do  
   it "should have schema items" do
     @collection.should respond_to(:schema)
-    @collection.schema.should be_a_kind_of(DataMapper::Collection)
+    @collection.schema.should be_a_kind_of(::DataMapper::Collection)
   end
   
   describe "add schema items" do
