@@ -8,7 +8,7 @@ require 'yogo/collection/field_view'
 module Yogo
   module Collection
     class Form
-      include DataMapper::Resource
+      include ::DataMapper::Resource
       
       property  :id,      UUID,         :key => true, :default => lambda { |p,r| Yogo::Configuration.random_uuid }
       property  :name,   String,        :required => true

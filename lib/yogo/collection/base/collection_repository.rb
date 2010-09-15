@@ -12,7 +12,7 @@ module Yogo
           end
           
           def collection_repository
-            DataMapper.repository(collection_repository_name)
+            ::DataMapper.repository(collection_repository_name)
           end
         end
       end # CollectionRepository

@@ -8,7 +8,7 @@ require 'yogo/collection/form'
 module Yogo
   module Collection
     class FieldView
-      include DataMapper::Resource
+      include ::DataMapper::Resource
       
       property  :id,      UUID,         :key => true, :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
       property  :label,   String,       

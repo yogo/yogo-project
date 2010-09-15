@@ -16,14 +16,14 @@ require 'ruby-debug'
 
 Spec::Runner.configure do |config|
   config.before(:suite) do
-    DataMapper.finalize
-    @default = DataMapper.setup(:default, :adapter => 'sqlite3', :database => "#{SPEC_TMP_DIR}/projects.db")
-    # @data = DataMapper.setup(Yogo::Project.default_data_repository_name, 
+    ::DataMapper.finalize
+    @default = ::DataMapper.setup(:default, :adapter => 'sqlite3', :database => "#{SPEC_TMP_DIR}/projects.db")
+    # @data = ::DataMapper.setup(Yogo::Project.default_data_repository_name, 
     #                                     "persevere://localhost:8080")
     
-    @collection_data = DataMapper.setup(:collection_data, :adapter => 'sqlite3', :database => "#{SPEC_TMP_DIR}/collection_data.db")
+    @collection_data = ::DataMapper.setup(:collection_data, :adapter => 'sqlite3', :database => "#{SPEC_TMP_DIR}/collection_data.db")
     
-    DataMapper.finalize
-    DataMapper.auto_migrate!
+    ::DataMapper.finalize
+    ::DataMapper.auto_migrate!
   end
 end

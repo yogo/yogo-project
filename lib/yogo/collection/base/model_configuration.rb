@@ -5,7 +5,7 @@ module Yogo
     module Base
       module ModelConfiguration
         def model_generate
-          DataMapper::Model.new
+          ::DataMapper::Model.new
         end
         
         def before_model_generate
