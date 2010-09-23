@@ -8,7 +8,7 @@ module Yogo
     
     property :id,               UUID,       :key => true, :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
     property :name,             String,     :required => true
-    property :description,      String
+    property :description,      Text
     
     has n,   :data_collections, :model => 'Yogo::Collection::Data', :child_key => [:project_id]
     
