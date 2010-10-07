@@ -14,7 +14,7 @@ module Yogo
       include ::DataMapper::Resource
       
       
-      property :id,               UUID,       :key => true, :default => lambda { Yogo::Configuration.random_uuid }
+      property :id,               UUID,       :key => true, :default => lambda { |p,r| Yogo::Configuration.random_uuid }
       property :name,             String,     :required => true
       property :description,      String
       property :type,             Discriminator

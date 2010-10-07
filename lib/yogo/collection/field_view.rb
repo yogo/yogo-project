@@ -10,7 +10,7 @@ module Yogo
     class FieldView
       include ::DataMapper::Resource
       
-      property  :id,      UUID,         :key => true, :default => lambda { UUIDTools::UUID.timestamp_create }
+      property  :id,      UUID,         :key => true, :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
       property  :label,   String,       
       property  :type,    String,       :required => true, :default => 'textfield'
       property  :options, Yaml,         :default => {}.to_yaml

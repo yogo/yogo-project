@@ -6,7 +6,7 @@ module Yogo
   class Project
     include ::DataMapper::Resource
     
-    property :id,               UUID,       :key => true, :default => lambda { UUIDTools::UUID.timestamp_create }
+    property :id,               UUID,       :key => true, :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
     property :name,             String,     :required => true
     property :description,      Text
     

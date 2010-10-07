@@ -8,7 +8,7 @@ module Yogo
     class Property
       include ::DataMapper::Resource
 
-      property  :id,      UUID,         :key => true, :default => lambda { Configuration.random_uuid }
+      property  :id,      UUID,         :key => true, :default => lambda { |p,r| Configuration.random_uuid }
       property  :name,    String,       :required => true
       property  :options, Yaml,         :default => {}.to_yaml
       property  :type,    Discriminator
@@ -16,7 +16,7 @@ module Yogo
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       
-      validates_uniqueness_of :name, :scope => :data_collection_id
+      # validates_uniqueness_of :name, :scope => :data_collection_id
       
       def field_name
         self.to_s
