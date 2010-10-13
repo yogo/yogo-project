@@ -6,20 +6,29 @@ shared_examples_for "All Collection Data Models" do
   end
 
   it "should use the collection data_repository" do
-    @data_model.repository.should == @data_model.collection.collection_repository
+    @collection.scope do
+      @data_model.repository.should == @data_model.collection.collection_repository
+    end
+    
   end
 
   describe "core properties" do
     it "should include :id" do
-      @data_model.properties[:id].should_not be_nil
+      @collection.scope do
+        @data_model.properties[:id].should_not be_nil
+      end
     end
     
     it "should include :created_at" do
-      @data_model.properties[:created_at].should_not be_nil
+      @collection.scope do
+        @data_model.properties[:created_at].should_not be_nil
+      end
     end
     
     it "should include :updated_at" do
-      @data_model.properties[:updated_at].should_not be_nil
+      @collection.scope do
+        @data_model.properties[:updated_at].should_not be_nil
+      end
     end
   end
 end

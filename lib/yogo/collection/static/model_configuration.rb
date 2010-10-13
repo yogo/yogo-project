@@ -1,24 +1,21 @@
-require 'yogo/collection/base/model'
-
 module Yogo
   module Collection
-    module Base
+    class Static
       module ModelConfiguration
         def model_generate
-          ::DataMapper::Model.new
+          model_name = self.static_model
+          ActiveSupport::Inflector.constantize(model_name)
         end
         
         def before_model_generate
         end
         
         def after_model_generate(model)
-          model.extend(Base::Model)
-          model.send(:include, Base::Model::InstanceMethods)
-          model.extend(Base::ModelCollectionContext)
+          model
         end
         
         def model_update(model)
-          model
+          model.extend(Base::ModelCollectionContext) unless model.respond_to?(:current_collection)
         end
 
         def before_model_update(model)
@@ -29,6 +26,6 @@ module Yogo
           model
         end
       end # ModelConfiguration
-    end # base
+    end # Static
   end # Collection
 end # Yogo
