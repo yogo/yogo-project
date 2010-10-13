@@ -18,6 +18,8 @@ coverage
 rdoc
 pkg
 .bundle
+.yardoc
 
 ## PROJECT::SPECIFIC
 spec/tmp
+asset_collection/**/*
