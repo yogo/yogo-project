@@ -1,12 +1,24 @@
 module Yogo
   module DataMapper
     module RepositoryManager
-      module Resource        
+      module Resource
+        # Ensure that models that we might store in the Project#managed_repository
+        # are properly migrated/upgrade whenever the Project changes.
+        # @author Ryan Heimbuch
+        # @see Project#prepare_models
+        def self.included(base)
+          base.class_eval { after :save, :prepare_models }
+        end
+
         def managed_repository_name
           raise NotImplementedError
         end
 
         def adapter_config
+          raise NotImplementedError
+        end
+
+        def finalize_managed_models!
           raise NotImplementedError
         end
 
@@ -27,7 +39,7 @@ module Yogo
             ::DataMapper.repository(managed_repository_name)
           end
         end
-        
+
         # Ensure that models that models managed by the Project
         # are properly migrated/upgraded inside the Project managed repository.
         #
@@ -42,13 +54,7 @@ module Yogo
             end
           }
         end
-        
-        # Ensure that models that we might store in the Project#managed_repository
-        # are properly migrated/upgrade whenever the Project changes.
-        # @author Ryan Heimbuch
-        # @see Project#prepare_models
-        after :save, :prepare_models
-        
+
         # Builds a "new", unsaved datamapper resource, that is explicitly
         # bound to the Project#managed_repository.
         # If you want to create a new resource that will be saved inside the
