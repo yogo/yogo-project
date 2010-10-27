@@ -9,7 +9,7 @@ module Yogo
           extend(RepositoryManager::Model)
           include(RepositoryManager::Resource)
         end
-      end      
+      end
     end # RepositoryManager
   end # DataMapper
 end # Yogo
@@ -22,9 +22,9 @@ module DataMapper
       end
     end # RepositoryManager
   end # Is
-  
+
   if const_defined?("Model")
     Model.append_extensions(Is::RepositoryManager)
   end
-end # DataMapper
+end # module DataMapper
 

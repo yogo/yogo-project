@@ -7,19 +7,46 @@ module Yogo
         # @author Ryan Heimbuch
         # @see Project#prepare_models
         def self.included(base)
-          base.class_eval { after :save, :prepare_models }
+          base.class_eval do
+            after :save, :prepare_models
+            after :create, :create_storage
+            before :destroy, :destroy_storage
+          end
         end
 
+        def create_storage
+          ::DataMapper.repository.adapter.create_db(managed_repository_database_name)
+          puts "Making new storage"
+        end
+
+        def destroy_storage
+          puts "Nuking storage"
+        end
+
+        # @author Ryan Heimbuch
+        #
+        # Override required from Yogo::DataMapper::Repository#managed_repository_name
+        #
+        # @return [Symbol] the name for the DataMapper::Repository that the Project manages
         def managed_repository_name
-          raise NotImplementedError
+          ActiveSupport::Inflector.tableize(id.to_s).to_sym
         end
 
+        def managed_repository_database_name
+          "voeis_project_#{managed_repository_name}"
+        end
+
+        # @author Ryan Heimbuch
+        #
+        # @return [Hash] The adapter configuration for the Project managed_repository
+        # @see DataMapper.setup
         def adapter_config
-          raise NotImplementedError
-        end
-
-        def finalize_managed_models!
-          raise NotImplementedError
+          # Read the configuration from the existing database.yml file
+          config = Rails.configuration.database_configuration
+          adapter_conf = config['yogo-db'].dup
+          adapter_conf['database'] = "#{adapter_conf['path']}#{managed_repository_database_name}"
+          adapter_conf.delete("path")
+          return adapter_conf
         end
 
         def adapter
