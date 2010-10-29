@@ -1,21 +1,37 @@
 begin
   require 'bundler'
   Bundler.setup
-  Bundler::GemHelper.install_tasks
 rescue LoadError
   puts "Bundler is not intalled. Install with: gem install bundler"
 end
 
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = %q{yogo-project}
+  gem.authors = ["Ryan Heimbuch"]
+  gem.description = %q{User configurable data layer for Yogo}
+  gem.email = %q{rheimbuch@gmail.com}
+  gem.homepage = %q{http://github.com/yogo/yogo_project}
+  gem.summary = %q{User configurable data layer for Yogo}
+  gem.add_dependency(%q<data_mapper>        )
+  gem.add_dependency(%q<dm-is-remixable>    )
+  gem.add_dependency(%q<dm-postgres-adapter>)
+  gem.add_dependency(%q<dm-sqlite-adapter>  )
+  #gem.add_dependency(%q<yogo-operation>     )
+  gem.add_dependency(%q<carrierwave>        )
+  gem.add_dependency(%q<configatron>        )
+  gem.add_dependency(%q<facets>             )
+end
+
 begin
-  require 'spec/rake/spectask'
-  Spec::Rake::SpecTask.new(:spec) do |spec|
-    spec.libs << 'lib' << 'spec'
-    spec.spec_files = FileList['spec/**/*_spec.rb']
-  end
-  Spec::Rake::SpecTask.new(:coverage) do |spec|
-    spec.libs << 'lib' << 'spec'
-    spec.pattern = 'spec/**/*_spec.rb'
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+
+  desc 'Run all examples using rcov'
+  RSpec::Core::RakeTask.new(:rcov) do |spec|
     spec.rcov = true
+    spec.rcov_opts =  %[-Ilib -Ispec --exclude "mocks,expectations,gems/*,spec/resources,spec/lib,spec/spec_helper.rb,db/*,/Library/Ruby/*,config/*"]
+    spec.rcov_opts << %[--no-html --aggregate coverage.data]
   end
 rescue LoadError
   puts "RSpec not installed. Install with: bundle install"

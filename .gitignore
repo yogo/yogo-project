@@ -23,3 +23,5 @@ pkg
 ## PROJECT::SPECIFIC
 spec/tmp
 asset_collection/**/*
+uploads/*
+log/datamapper.log
