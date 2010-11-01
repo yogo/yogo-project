@@ -99,37 +99,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<data_mapper>        , ["~> 1.0.2"])
-      s.add_runtime_dependency(%q<dm-is-remixable>                  )
-      s.add_runtime_dependency(%q<dm-postgres-adapter>              )
-      s.add_runtime_dependency(%q<dm-sqlite-adapter>                )
-      s.add_runtime_dependency(%q<carrierwave>                      )
-      s.add_runtime_dependency(%q<configatron>                      )
-      s.add_runtime_dependency(%q<facets>                           )
-      s.add_runtime_dependency(%q<yogo-datamapper>                  )
-      s.add_runtime_dependency(%q<yogo-operation>                   )
+      s.add_runtime_dependency(%q<data_mapper>, [">= 0"])
+      s.add_runtime_dependency(%q<dm-is-remixable>, [">= 0"])
+      s.add_runtime_dependency(%q<dm-postgres-adapter>, [">= 0"])
+      s.add_runtime_dependency(%q<dm-sqlite-adapter>, [">= 0"])
+      s.add_runtime_dependency(%q<carrierwave>, [">= 0"])
+      s.add_runtime_dependency(%q<configatron>, [">= 0"])
+      s.add_runtime_dependency(%q<facets>, [">= 0"])
     else
-      s.add_dependency(%q<data_mapper>                , ["~> 1.0.2"])
-      s.add_dependency(%q<dm-is-remixable>                          )
-      s.add_dependency(%q<dm-postgres-adapter>                      )
-      s.add_dependency(%q<dm-sqlite-adapter>                        )
-      s.add_dependency(%q<carrierwave>                              )
-      s.add_dependency(%q<configatron>                              )
-      s.add_dependency(%q<facets>                                   )
-      s.add_dependency(%q<yogo-datamapper>                          )
-      s.add_dependency(%q<yogo-operation>                           )
+      s.add_dependency(%q<data_mapper>, [">= 0"])
+      s.add_dependency(%q<dm-is-remixable>, [">= 0"])
+      s.add_dependency(%q<dm-postgres-adapter>, [">= 0"])
+      s.add_dependency(%q<dm-sqlite-adapter>, [">= 0"])
+      s.add_dependency(%q<carrierwave>, [">= 0"])
+      s.add_dependency(%q<configatron>, [">= 0"])
+      s.add_dependency(%q<facets>, [">= 0"])
     end
   else
-    s.add_dependency(%q<data_mapper>                  , ["~> 1.0.2"])
-    s.add_dependency(%q<dm-is-remixable>                            )
-    s.add_dependency(%q<dm-postgres-adapter>                        )
-    s.add_dependency(%q<dm-sqlite-adapter>                          )
-    s.add_dependency(%q<carrierwave>                                )
-    s.add_dependency(%q<configatron>                                )
-    s.add_dependency(%q<facets>                                     )
-    s.add_dependency(%q<yogo-datamapper>                            )
-    s.add_dependency(%q<yogo-operation>                             )
-
+    s.add_dependency(%q<data_mapper>, [">= 0"])
+    s.add_dependency(%q<dm-is-remixable>, [">= 0"])
+    s.add_dependency(%q<dm-postgres-adapter>, [">= 0"])
+    s.add_dependency(%q<dm-sqlite-adapter>, [">= 0"])
+    s.add_dependency(%q<carrierwave>, [">= 0"])
+    s.add_dependency(%q<configatron>, [">= 0"])
+    s.add_dependency(%q<facets>, [">= 0"])
   end
 end
 
