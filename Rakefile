@@ -13,11 +13,11 @@ Jeweler::Tasks.new do |gem|
   gem.email = %q{rheimbuch@gmail.com}
   gem.homepage = %q{http://github.com/yogo/yogo_project}
   gem.summary = %q{User configurable data layer for Yogo}
-  gem.add_dependency(%q<data_mapper>        )
+  gem.add_dependency(%q<data_mapper>        , "~>1.0.2")
   gem.add_dependency(%q<dm-is-remixable>    )
   gem.add_dependency(%q<dm-postgres-adapter>)
   gem.add_dependency(%q<dm-sqlite-adapter>  )
-  #gem.add_dependency(%q<yogo-operation>     )
+  gem.add_dependency(%q<yogo-operation>     )
   gem.add_dependency(%q<carrierwave>        )
   gem.add_dependency(%q<configatron>        )
   gem.add_dependency(%q<facets>             )
