@@ -4,13 +4,11 @@ PATH
     yogo-project (0.3.2)
       carrierwave
       configatron
-      data_mapper (~> 1.0.2)
+      data_mapper
       dm-is-remixable
       dm-postgres-adapter
       dm-sqlite-adapter
       facets
-      yogo-datamapper
-      yogo-operation
 
 GEM
   remote: http://rubygems.org/
@@ -43,7 +41,6 @@ GEM
       dm-validations (= 1.0.2)
     data_objects (0.10.2)
       addressable (~> 2.1)
-    dataflow (0.3.1)
     diff-lcs (1.1.2)
     dm-aggregates (1.0.2)
       dm-core (~> 1.0.2)
@@ -147,20 +144,6 @@ GEM
     yard (0.6.1)
     yardstick (0.1.0)
       yard (~> 0.2)
-    yogo-datamapper (0.3.0)
-      dm-aggregates (~> 1.0.2)
-      dm-core (~> 1.0.2)
-      dm-is-remixable
-      dm-migrations
-      dm-timestamps
-      dm-types (~> 1.0.2)
-      dm-validations
-      yogo-operation
-      yogo-support
-    yogo-operation (0.1.2)
-      dataflow
-      yogo-support (~> 0.1.0)
-    yogo-support (0.1.1)
 
 PLATFORMS
   ruby
@@ -170,7 +153,7 @@ DEPENDENCIES
   carrierwave
   configatron
   cucumber
-  data_mapper (~> 1.0.2)
+  data_mapper
   dm-is-remixable
   dm-postgres-adapter
   dm-sqlite-adapter
@@ -185,6 +168,4 @@ DEPENDENCIES
   ruby-debug19
   yard
   yardstick
-  yogo-datamapper
-  yogo-operation
   yogo-project!
