@@ -16,11 +16,10 @@ module Yogo
 
         def create_storage
           ::DataMapper.repository.adapter.create_db(managed_repository_database_name)
-          puts "Making new storage"
         end
 
         def destroy_storage
-          puts "Nuking storage"
+          # TODO: Implement me.
         end
 
         # @author Ryan Heimbuch

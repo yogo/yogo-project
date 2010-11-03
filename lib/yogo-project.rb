@@ -1,2 +1,1 @@
-require 'datamapper/adapters/postgres'
-require 'datamapper/adapters/sqlite'
+require 'yogo/datamapper/adapters'
