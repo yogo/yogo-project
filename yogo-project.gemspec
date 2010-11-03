@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ryan Heimbuch"]
-  s.date = %q{2010-11-01}
+  s.date = %q{2010-11-03}
   s.description = %q{User configurable data layer for Yogo}
   s.email = %q{rheimbuch@gmail.com}
   s.extra_rdoc_files = [
@@ -28,8 +28,6 @@ Gem::Specification.new do |s|
      "features/step_definitions/yogo_project_steps.rb",
      "features/support/env.rb",
      "features/yogo_project.feature",
-     "lib/datamapper/adapters/postgres.rb",
-     "lib/datamapper/adapters/sqlite.rb",
      "lib/yogo-project.rb",
      "lib/yogo/collection.rb",
      "lib/yogo/collection/asset.rb",
@@ -51,6 +49,9 @@ Gem::Specification.new do |s|
      "lib/yogo/collection/static.rb",
      "lib/yogo/collection/static/model_configuration.rb",
      "lib/yogo/configuration.rb",
+     "lib/yogo/datamapper/adapters.rb",
+     "lib/yogo/datamapper/adapters/postgres.rb",
+     "lib/yogo/datamapper/adapters/sqlite.rb",
      "lib/yogo/datamapper/model/common/properties.rb",
      "lib/yogo/datamapper/model/configuration.rb",
      "lib/yogo/datamapper/model/operations/add.rb",
@@ -91,6 +92,7 @@ Gem::Specification.new do |s|
      "spec/yogo/all_collections_spec.rb",
      "spec/yogo/all_data_collections_spec.rb",
      "spec/yogo/asset_collection_spec.rb",
+     "spec/yogo/collection_data_definition_spec.rb",
      "spec/yogo/data_collection_spec.rb"
   ]
 
