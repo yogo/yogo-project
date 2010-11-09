@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yogo-project (0.5.0)
+    yogo-project (0.5.1)
       carrierwave
       configatron
       data_mapper (~> 1.0.2)
