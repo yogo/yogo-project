@@ -1,26 +1,30 @@
 begin
-  require 'bundler'
-  Bundler.setup
+#  require 'bundler'
+#  Bundler.setup
 rescue LoadError
   puts "Bundler is not intalled. Install with: gem install bundler"
 end
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  gem.name = %q{yogo-project}
-  gem.authors = ["Ryan Heimbuch"]
-  gem.description = %q{User configurable data layer for Yogo}
-  gem.email = %q{rheimbuch@gmail.com}
-  gem.homepage = %q{http://github.com/yogo/yogo_project}
-  gem.summary = %q{User configurable data layer for Yogo}
-  gem.add_dependency(%q<data_mapper>        , "~>1.0.2")
-  gem.add_dependency(%q<dm-is-remixable>    )
-  gem.add_dependency(%q<dm-postgres-adapter>)
-  gem.add_dependency(%q<dm-sqlite-adapter>  )
-  gem.add_dependency(%q<yogo-operation>     )
-  gem.add_dependency(%q<carrierwave>        )
-  gem.add_dependency(%q<configatron>        )
-  gem.add_dependency(%q<facets>             )
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = %q{yogo-project}
+    gem.authors = ["Ryan Heimbuch"]
+    gem.description = %q{User configurable data layer for Yogo}
+    gem.email = %q{rheimbuch@gmail.com}
+    gem.homepage = %q{http://github.com/yogo/yogo_project}
+    gem.summary = %q{User configurable data layer for Yogo}
+    gem.add_dependency(%q<data_mapper>        , "1.1.0")
+    gem.add_dependency(%q<dm-is-remixable>    )
+    gem.add_dependency(%q<dm-postgres-adapter>)
+    gem.add_dependency(%q<dm-sqlite-adapter>  )
+    gem.add_dependency(%q<yogo-operation>     )
+    gem.add_dependency(%q<carrierwave>        )
+    gem.add_dependency(%q<configatron>        )
+    gem.add_dependency(%q<facets>             )
+  end
+rescue LoadError
+  puts "Jeweler not installed. Install with: gem install jewler"
 end
 
 begin
