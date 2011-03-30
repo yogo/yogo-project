@@ -3,7 +3,10 @@ module Yogo
     module Adapters
       module PostgresAdapter
         def create_db(name)
-          execute("CREATE DATABASE #{name}")
+          dbs = select("select count(*) from pg_catalog.pg_database where datname = '#{name}' ;")
+          unless dbs[0] > 0
+            execute("CREATE DATABASE #{name}")
+          end
         end
       end # module PostgresAdapter
     end # module Adapters
