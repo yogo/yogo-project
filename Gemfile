@@ -17,6 +17,11 @@ group :development, :test do
   gem "autotest"
   gem "rack-test"
   gem "cucumber"
+  
+  gem "sqlite3"
+  gem "dm-sqlite-adapter"
+  # gem "postgres"
+  # gem "dm-postgres-adapter"
 
   # Platform specifics
   platforms(:mri_19) do
