@@ -1,6 +1,6 @@
 require 'yogo/collection/data'
 require 'carrierwave'
-require 'carrierwave/orm/datamapper'
+require 'carrierwave/datamapper'
 
 module Yogo
   module Collection
