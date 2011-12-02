@@ -15,7 +15,7 @@ require 'rack/test'
 require 'rack/mock'
 
 require 'data_mapper'
-require 'dm-postgres-adapter'
+# require 'dm-postgres-adapter'
 require 'dm-sqlite-adapter'
 
 require 'yogo-project'
