@@ -14,6 +14,7 @@ require 'autotest/rspec2'
 require 'rack/test'
 require 'rack/mock'
 
+# Move these requirements into the Gemfile if sensible
 require 'data_mapper'
 # require 'dm-postgres-adapter'
 require 'dm-sqlite-adapter'
@@ -38,7 +39,7 @@ SPEC_RES_DIR = File.join(SPEC_DIR, 'resource')
 DB_URL         = "sqlite://#{SPEC_TMP_DIR}/projects.db"
 COLLECTION_URL = "sqlite://#{SPEC_TMP_DIR}/collections.db"
 
-Rspec.configure do |config|
+RSpec.configure do |config|
   config.before(:suite) do
     DataMapper::Model.raise_on_save_failure = true
     DataMapper::Logger.new('log/datamapper.log', :debug)
