@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{yogo-project}
-  s.version = "0.5.1"
+  s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Ryan Heimbuch"]
-  s.date = %q{2011-03-21}
+  s.authors = ["Pol Llovet","Ryan Heimbuch"]
+  s.date = %q{2011-12-21}
   s.description = %q{User configurable data layer for Yogo}
-  s.email = %q{rheimbuch@gmail.com}
+  s.email = %q{pol.llovet@gmail.com rheimbuch@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -24,9 +24,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "features/step_definitions/yogo_project_steps.rb",
-    "features/support/env.rb",
-    "features/yogo_project.feature",
     "lib/yogo-project.rb",
     "lib/yogo/collection.rb",
     "lib/yogo/collection/asset.rb",
@@ -98,33 +95,9 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<yogo-project>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yardstick>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<autotest>, [">= 0"])
-      s.add_development_dependency(%q<rack-test>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yardstick>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<autotest>, [">= 0"])
-      s.add_development_dependency(%q<rack-test>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yardstick>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<autotest>, [">= 0"])
-      s.add_development_dependency(%q<rack-test>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_runtime_dependency(%q<data_mapper>, ["= 1.1.0"])
-      s.add_runtime_dependency(%q<dm-is-remixable>, [">= 0"])
+      # s.add_runtime_dependency(%q<dm-is-remixable>, [">= 0"])
       # s.add_runtime_dependency(%q<dm-postgres-adapter>, [">= 0"])
       # s.add_runtime_dependency(%q<dm-sqlite-adapter>, [">= 0"])
       s.add_runtime_dependency(%q<yogo-operation>, [">= 0"])
@@ -133,33 +106,9 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<configatron>, [">= 0"])
       s.add_runtime_dependency(%q<facets>, [">= 0"])
     else
-      s.add_dependency(%q<yogo-project>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yardstick>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<autotest>, [">= 0"])
-      s.add_dependency(%q<rack-test>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yardstick>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<autotest>, [">= 0"])
-      s.add_dependency(%q<rack-test>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yardstick>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<autotest>, [">= 0"])
-      s.add_dependency(%q<rack-test>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<data_mapper>, ["= 1.1.0"])
-      s.add_dependency(%q<dm-is-remixable>, [">= 0"])
+      # s.add_dependency(%q<dm-is-remixable>, [">= 0"])
       # s.add_dependency(%q<dm-postgres-adapter>, [">= 0"])
       # s.add_dependency(%q<dm-sqlite-adapter>, [">= 0"])
       s.add_dependency(%q<yogo-operation>, [">= 0"])
@@ -169,33 +118,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<facets>, [">= 0"])
     end
   else
-    s.add_dependency(%q<yogo-project>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yardstick>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<autotest>, [">= 0"])
-    s.add_dependency(%q<rack-test>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yardstick>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<autotest>, [">= 0"])
-    s.add_dependency(%q<rack-test>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yardstick>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<autotest>, [">= 0"])
-    s.add_dependency(%q<rack-test>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<data_mapper>, ["= 1.1.0"])
-    s.add_dependency(%q<dm-is-remixable>, [">= 0"])
+    # s.add_dependency(%q<dm-is-remixable>, [">= 0"])
     # s.add_dependency(%q<dm-postgres-adapter>, [">= 0"])
     # s.add_dependency(%q<dm-sqlite-adapter>, [">= 0"])
     s.add_dependency(%q<yogo-operation>, [">= 0"])
