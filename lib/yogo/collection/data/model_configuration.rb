@@ -15,7 +15,9 @@ module Yogo
         def before_model_update(model)
           model = super
           model.properties.clear
-          model.properties.instance_variable_get(:@properties).clear #clear out the name index
+          unless model.properties.instance_variable_get(:@properties).nil?
+            model.properties.instance_variable_get(:@properties).clear #clear out the name index
+          end
           # Need to remove relationships too
           model.relationships.clear
           model.validators.clear!
