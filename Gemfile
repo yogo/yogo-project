@@ -16,7 +16,6 @@ group :development, :test do
   gem "rspec"
   gem "autotest"
   gem "rack-test"
-  gem "cucumber"
   
   gem "sqlite3"
   gem "dm-sqlite-adapter"
