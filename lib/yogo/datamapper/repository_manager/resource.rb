@@ -66,7 +66,7 @@ module Yogo
           end
         end
 
-        # Ensure that models that models managed by the Project
+        # Ensure that models managed by the Project
         # are properly migrated/upgraded inside the Project managed repository.
         #
         # @author Ryan Heimbuch
