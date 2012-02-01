@@ -19,8 +19,8 @@ group :development, :test do
   
   gem "sqlite3"
   gem "dm-sqlite-adapter"
-  # gem "postgres"
-  # gem "dm-postgres-adapter"
+  gem "postgres"
+  gem "dm-postgres-adapter"
 
   # Platform specifics
   platforms(:mri_19) do

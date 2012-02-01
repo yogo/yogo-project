@@ -20,8 +20,8 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency("data_mapper")
   gem.add_runtime_dependency("dm-is-remixable")
-  # gem.add_runtime_dependency("dm-postgres-adapter")
-  # gem.add_runtime_dependency("dm-sqlite-adapter")
+  gem.add_runtime_dependency("dm-postgres-adapter")
+  gem.add_runtime_dependency("dm-sqlite-adapter")
 
   gem.add_runtime_dependency("rake")
   gem.add_runtime_dependency("carrierwave")
