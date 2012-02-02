@@ -8,7 +8,12 @@ module Yogo
         
         module InstanceMethods
           def collection_repository_name
-            self.class.default_collection_repository_name
+            conf = Rails.configuration.database_configuration[Rails.env]
+            if conf['repositories'] && conf['repositories'][default_collection_repository_name]
+              self.class.default_collection_repository_name
+            else
+              :default
+            end
           end
           
           def collection_repository
