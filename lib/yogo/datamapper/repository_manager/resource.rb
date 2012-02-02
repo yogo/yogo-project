@@ -30,9 +30,13 @@ module Yogo
         def managed_repository_name
           ActiveSupport::Inflector.tableize(id.to_s).to_sym
         end
+        
+        def managed_repository_path
+          Rails.configuration.database_configuration['yogo-db']['path']
+        end
 
         def managed_repository_database_name
-          "voeis_project_#{managed_repository_name}"
+          "#{managed_repository_path}#{managed_repository_name}"
         end
 
         # @author Ryan Heimbuch
@@ -43,11 +47,11 @@ module Yogo
           # Read the configuration from the existing database.yml file
           config = Rails.configuration.database_configuration
           adapter_conf = config['yogo-db'].dup
-          adapter_conf['database'] = "#{adapter_conf['path']}#{managed_repository_database_name}"
+          adapter_conf['database'] = "#{managed_repository_database_name}"
           adapter_conf.delete("path")
           return adapter_conf
         end
-
+        
         def adapter
           begin
             ::DataMapper.repository(managed_repository_name).adapter
