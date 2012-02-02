@@ -70,13 +70,16 @@ module Yogo
         # are properly migrated/upgraded inside the Project managed repository.
         #
         # @author Ryan Heimbuch
+        # @author Pol Llovet (handle no managed_models)
         # @todo Refactor this method into a module in yogo-project
         def prepare_models
           adapter # ensure the adapter exists or is setup
           managed_repository.scope {
             self.class.finalize_managed_models!
-            self.class.managed_models.each do |klass|
-              klass.auto_upgrade!
+            if self.class.managed_models
+              self.class.managed_models.each do |klass|
+                klass.auto_upgrade!
+              end
             end
           }
         end

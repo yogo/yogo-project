@@ -24,14 +24,17 @@ module Yogo
         end
         
         # Ensure that Relation models are also managed
+        # @update Pol Llovet (handle no managed_models)
         def finalize_managed_models!
           models = []
-          @managed_models.each do |m|
-            models += m.relationships.values.map{|r| r.child_model }
-            models += m.relationships.values.map{|r| r.parent_model }
+          if @managed_models
+            @managed_models.each do |m|
+              models += m.relationships.values.map{|r| r.child_model }
+              models += m.relationships.values.map{|r| r.parent_model }
+            end
+            @managed_models += models
+            @managed_models.uniq!
           end
-          @managed_models += models
-          @managed_models.uniq!
           @managed_models
         end
       end # Model
