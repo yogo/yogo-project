@@ -11,6 +11,14 @@ module Yogo
         def resolve_property(options)
           collection.send(:resolve_property, options)
         end
+        
+        # For some reason collection returns nil
+        # LBR HACK
+        def collection
+          uuid = storage_name[0...-1].gsub('_','-')
+          Yogo::Collection::Data.get(uuid) ||
+            Yogo::Collecion::Asset.get(uuid)
+        end
 
         
         module InstanceMethods
