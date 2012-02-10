@@ -14,7 +14,7 @@ module Yogo
             end
             
             def filename
-              Digest::MD5.hexdigest(self.read)
+              Digest::MD5.hexdigest(self.read) if self.read
               #UUIDTools::UUID.timestamp_create
             end
           }, __FILE__, __LINE__+1
