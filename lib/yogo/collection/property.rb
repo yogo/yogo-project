@@ -12,6 +12,7 @@ module Yogo
       property  :name,    String,       :required => true
       property  :options, Yaml,         :default => {}.to_yaml
       property  :type,    Discriminator
+      property  :description, Text
       
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
