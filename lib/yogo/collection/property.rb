@@ -15,6 +15,7 @@ module Yogo
       
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
+      belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
       
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
