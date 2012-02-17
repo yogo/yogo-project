@@ -46,8 +46,18 @@ module Yogo
             
             private
             
+            def remove_file!
+              #noop
+            end
+            
+            def remove_previously_stored_file
+              #noop
+            end 
+            
             def set_original_filename
-              attribute_set(:original_filename, file.send(:original_filename))
+              if original_filename.nil?
+                attribute_set(:original_filename, file.send(:original_filename)) 
+              end
             end
             
             #copies the pre-saved item to a version and then deletes the version
