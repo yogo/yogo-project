@@ -21,7 +21,8 @@ module Yogo
       
       property   :project_id,     UUID
       belongs_to :project, :model => 'Yogo::Project'
-      
+      property  :deleted_at,           ::DataMapper::Property::ParanoidDateTime
+      property  :private, Boolean,  :default => true
       validates_uniqueness_of :name, :scope => :project_id
       
       has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id]
