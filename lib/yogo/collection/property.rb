@@ -13,7 +13,7 @@ module Yogo
       property  :options, Yaml,         :default => {}.to_yaml
       property  :type,    Discriminator
       property  :description, Text
-      property  :deleted_at,           ::DataMapper::Property::ParanoidDateTime
+      property  :deleted_at,  ParanoidDateTime
       property  :private, Boolean,  :default => true
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
