@@ -9,8 +9,8 @@ module Yogo
     property :created_at,   DateTime
     property :updated_at,   DateTime
     property :deleted_at, ParanoidDateTime
-    belongs_to :source_collection, :model=>"Yogo::Collection::Data", :index=>true
-    belongs_to :target_collection, :model=>"Yogo::Collection::Data", :index=>true
+    belongs_to :source_collection, :model=>"Yogo::Collection::Data"
+    belongs_to :target_collection, :model=>"Yogo::Collection::Data"
     belongs_to :schema, :model =>"Yogo::Collection::Property", :required=>false
     
     alias :collection :target_collection
