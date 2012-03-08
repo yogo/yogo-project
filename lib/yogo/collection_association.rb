@@ -12,6 +12,8 @@ module Yogo
     belongs_to :source_collection, :model=>"Yogo::Collection::Data"
     belongs_to :target_collection, :model=>"Yogo::Collection::Data"
     belongs_to :schema, :model =>"Yogo::Collection::Property", :required=>false
+    belongs_to :target_display_schema, :model =>"Yogo::Collection::Property", :required=>false
+    
     
     alias :collection :target_collection
     
