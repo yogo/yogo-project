@@ -5,8 +5,8 @@ require 'yogo/collection'
 module Yogo
   class CollectionAssociation
     include ::DataMapper::Resource
-    belongs_to :source_collection, :model=>"Yogo::Collection::Data", :key => true, :parent_key => :source_collection_id
-    belongs_to :target_collection, :model=>"Yogo::Collection::Data", :key=>true, :parent_key=> :target_collection_id
+    belongs_to :source_collection, :model=>"Yogo::Collection::Data", :key => true
+    belongs_to :target_collection, :model=>"Yogo::Collection::Data", :key =>true
     
     alias :collection :target_collection
     
