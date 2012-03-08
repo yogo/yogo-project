@@ -2,6 +2,7 @@ require 'dm-types/uuid'
 require 'dm-types/yaml'
 
 require 'yogo/configuration'
+require 'yogo/collection_association'
 
 module Yogo
   module Collection
@@ -18,6 +19,7 @@ module Yogo
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
+      has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
       
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
