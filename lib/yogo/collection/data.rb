@@ -21,11 +21,12 @@ module Yogo
       
       property   :project_id,     UUID
       belongs_to :project, :model => 'Yogo::Project'
-      property  :deleted_at,           ::DataMapper::Property::ParanoidDateTime
+      property  :deleted_at, ParanoidDateTime
       property  :private, Boolean,  :default => true
       property  :category, String
       validates_uniqueness_of :name, :scope => :project_id
-      
+      has 1, :schema_controlled_vocabulary, :through=> :collection_associations, :required => false
+      has n, :collections, :through=>:collection_associations
       has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id]
       
       include Collection::Base
