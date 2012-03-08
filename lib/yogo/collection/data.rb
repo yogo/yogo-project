@@ -24,6 +24,7 @@ module Yogo
       property  :deleted_at, ParanoidDateTime
       property  :private, Boolean,  :default => true
       property  :category, String
+      property :source_collection_id, Integer
       validates_uniqueness_of :name, :scope => :project_id
       has n, :collection_associations, :model => "Yogo::CollectionAssociation", :child_key => :source_collection_id
       has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id]
