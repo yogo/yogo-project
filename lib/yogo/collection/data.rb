@@ -7,7 +7,7 @@ require 'yogo/configuration'
 require 'yogo/collection/base'
 require 'yogo/collection/data/model_configuration'
 require 'yogo/collection/property'
-
+require 'yogo/collection_association'
 module Yogo
   module Collection
     class Data
