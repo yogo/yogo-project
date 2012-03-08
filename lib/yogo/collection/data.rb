@@ -18,9 +18,10 @@ module Yogo
       property :name,             String,     :required => true
       property :description,      String
       property :type,             Discriminator
-      
       property   :project_id,     UUID
       belongs_to :project, :model => 'Yogo::Project'
+      property :created_at,   DateTime
+      property :updated_at,   DateTime
       property  :deleted_at, ParanoidDateTime
       property  :private, Boolean,  :default => true
       property  :category, String

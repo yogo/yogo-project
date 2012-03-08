@@ -5,6 +5,10 @@ require 'yogo/collection'
 module Yogo
   class CollectionAssociation
     include ::DataMapper::Resource
+    property :id, Serial
+    property :created_at,   DateTime
+    property :updated_at,   DateTime
+    property :deleted_at, ParanoidDateTime
     belongs_to :source_collection, :model=>"Yogo::Collection::Data", :index=>true
     belongs_to :target_collection, :model=>"Yogo::Collection::Data", :index=>true
     belongs_to :schema, :model =>"Yogo::Collection::Property", :required=>false

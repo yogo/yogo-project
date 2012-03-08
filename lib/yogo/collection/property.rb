@@ -14,6 +14,8 @@ module Yogo
       property  :options, Yaml,         :default => {}.to_yaml
       property  :type,    Discriminator
       property  :description, Text
+      property :created_at,   DateTime
+      property :updated_at,   DateTime
       property  :deleted_at,  ParanoidDateTime
       property  :private, Boolean,  :default => true
       property   :data_collection_id, UUID
