@@ -21,8 +21,8 @@ module Yogo
       property   :data_collection_id, UUID
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
-      has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
-      
+      #has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
+      belongs_to :associated_schema, :model => 'Yogo::Collection::Property', :required => false
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
       def field_name

@@ -22,7 +22,6 @@ module Yogo
         [false, "You can't associate a collection with itself, this isn't a good idea!"]
       else
         if Yogo::CollectionAssociation.first(:source_collection=>source_collection,
-                                             :target_collection=>target_collection,
                                              :schema=>schema)
           [false, "You can't duplicate asscoations!"]
         else  

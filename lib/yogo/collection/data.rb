@@ -26,8 +26,8 @@ module Yogo
       property  :private, Boolean,  :default => true
       property  :category, String
       validates_uniqueness_of :name, :scope => :project_id
-      has n, :collection_associations, :model => "Yogo::CollectionAssociation", :child_key=> :source_collection_id
-      has n, :collections, self, :through => :collection_associations, :via => :target_collection
+      #has n, :collection_associations, :model => "Yogo::CollectionAssociation", :child_key=> :source_collection_id
+      #has n, :collections, self, :through => :collection_associations, :via => :target_collection
       has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id]
       
       include Collection::Base
