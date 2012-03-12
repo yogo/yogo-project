@@ -19,11 +19,26 @@ module Yogo
       property  :deleted_at,  ParanoidDateTime
       property  :private, Boolean,  :default => true
       property   :data_collection_id, UUID
+      property  :original_uid, UUID, :required=>false
+      property :updated_comment,      Text,    :lazy=>false
+      property :provenance_comment,   Text :required=>false, :required =>false
+      property :updated_by,           Integer, :lazy=>false, :required=>false
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
       #has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
       belongs_to :associated_schema, :model => 'Yogo::Collection::Property', :required => false
       # validates_uniqueness_of :name, :scope => :data_collection_id
+      
+      before :save, :make_version
+      
+      
+      #pulls all the versions of the current item
+      #NOTE that a record that has just been created WILL have a version which is
+      #an exact copy
+      def versions
+        self.model.collection.schema.with_deleted.all(:original_uid=>self.id.to_s, :order=>[:deleted_at])
+      end
+      
       
       def field_name
         self.to_s
@@ -129,6 +144,23 @@ module Yogo
         end
       end
       
+      private
+      
+      #copies the pre-saved schema to a version and then deletes the schema
+      #this will make a version for a newly created record 
+      def make_version
+        # check to see if this is a version record because it is we do nothing                
+        if self.original_uid.nil?
+          #this is a new or updated record so make a new version
+          dirty_props = (self.dirty_attributes.keys.map{|k| k.name.to_s }-['id','updated_at','provenance_comment','deleted_at']).join(', ')
+          self.updated_comment = "UPDATED_FIELDS: #{dirty_props}"
+          att = self.attributes
+          att.delete(:id)
+          att = att.merge({:original_uid => self.id})
+          version = self.model.collection.schema.create(att)
+          version.destroy
+        end #if
+      end#make_version
     end
   end # Collection
 end # Yogo
