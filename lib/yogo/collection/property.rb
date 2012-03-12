@@ -85,6 +85,24 @@ module Yogo
         class #{type} < Property; end
         }
       end
+      
+      private
+      
+      #copies the pre-saved schema to a version and then deletes the schema
+      #this will make a version for a newly created record 
+      def make_version
+        # check to see if this is a version record because it is we do nothing                
+        if self.original_uid.nil?
+          #this is a new or updated record so make a new version
+          dirty_props = (self.dirty_attributes.keys.map{|k| k.name.to_s }-['id','updated_at','provenance_comment','deleted_at']).join(', ')
+          self.updated_comment = "UPDATED_FIELDS: #{dirty_props}"
+          att = self.attributes
+          att.delete(:id)
+          att = att.merge({:original_uid => self.id})
+          version = self.model.collection.schema.create(att)
+          version.destroy
+        end #if
+      end#make_version
     end # Property
     
     
@@ -144,23 +162,7 @@ module Yogo
         end
       end
       
-      private
       
-      #copies the pre-saved schema to a version and then deletes the schema
-      #this will make a version for a newly created record 
-      def make_version
-        # check to see if this is a version record because it is we do nothing                
-        if self.original_uid.nil?
-          #this is a new or updated record so make a new version
-          dirty_props = (self.dirty_attributes.keys.map{|k| k.name.to_s }-['id','updated_at','provenance_comment','deleted_at']).join(', ')
-          self.updated_comment = "UPDATED_FIELDS: #{dirty_props}"
-          att = self.attributes
-          att.delete(:id)
-          att = att.merge({:original_uid => self.id})
-          version = self.model.collection.schema.create(att)
-          version.destroy
-        end #if
-      end#make_version
     end
   end # Collection
 end # Yogo
