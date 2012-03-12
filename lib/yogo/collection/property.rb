@@ -98,7 +98,7 @@ module Yogo
           self.updated_comment = "UPDATED_FIELDS: #{dirty_props}"
           att = self.attributes
           att.delete(:id)
-          att = att.merge(:deleted_at=>Time.now)
+          att = att.merge(:deleted_at=> ::Time.now)
           att = att.merge({:original_uid => self.id})
           version = Yogo::Collection::Property.create(att)
         end #if
