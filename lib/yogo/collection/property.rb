@@ -36,7 +36,7 @@ module Yogo
       #NOTE that a record that has just been created WILL have a version which is
       #an exact copy
       def versions
-        self.model.data_collection.schema.with_deleted.all(:original_uid=>self.id.to_s, :order=>[:deleted_at])
+        self.model.data_collection.schema.all(:deleted_at.not => nil, :original_uid=>self.id.to_s, :order=>[:deleted_at])
       end
       
       
