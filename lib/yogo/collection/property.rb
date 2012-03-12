@@ -99,7 +99,7 @@ module Yogo
           att = self.attributes
           att.delete(:id)
           att = att.merge({:original_uid => self.id})
-          version = self.model.data_collection.schema.create(att)
+          version = Yogo::Collection::Property.create(att)
           version.destroy
         end #if
       end#make_version
