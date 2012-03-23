@@ -39,13 +39,24 @@ module Yogo
         Yogo::Collection::Property.with_deleted.all(:original_uid=>self.id.to_s, :order=>[:deleted_at])
       end
       
+      def self.by_field_name(fname)
+        get(self.field_name_to_uid(fname))
+      end
+
+      def self.field_name_to_uid(fname)
+        fname[6..-1].gsub('_','-')
+      end
+
+      def self.uid_to_field_name(uid)
+        'field_' + uid.to_s.gsub('-','_')
+      end
       
       def field_name
         self.to_s
       end
     
       def to_s
-        'field_' + self.id.to_s.gsub('-','_')
+        self.class.uid_to_field_name(self.id)
       end
       
       def as_json(opts=nil)
