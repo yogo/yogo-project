@@ -23,6 +23,7 @@ module Yogo
       property :updated_comment,      Text,    :lazy=>false
       property :provenance_comment,   Text, :required=>false, :required =>false
       property :updated_by,           Integer, :lazy=>false, :required=>false
+      property :display_value,        String, :lazy=>false, :required=>false
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
       #has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
