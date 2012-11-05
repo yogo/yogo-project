@@ -26,6 +26,7 @@ module Yogo
               property :file,               String
               property :original_filename,  String
             end
+            property :display_value,        String, :lazy=>false, :required=>false
             property :deleted_at,           ::DataMapper::Property::ParanoidDateTime
             property :updated_comment,      ::DataMapper::Property::Text,    :lazy=>false
             property :provenance_comment,   ::DataMapper::Property::Text, :required=>false, :required =>false
