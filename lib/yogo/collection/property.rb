@@ -9,20 +9,22 @@ module Yogo
     class Property
       include ::DataMapper::Resource
 
-      property  :id,      UUID,         :key => true, :default => lambda { |p,r| Configuration.random_uuid }
-      property  :name,    String,       :required => true
-      property  :options, Yaml,         :default => {}.to_yaml
-      property  :type,    Discriminator
-      property  :description, Text
-      property :created_at,   DateTime
-      property :updated_at,   DateTime
-      property  :deleted_at,  ParanoidDateTime
-      property  :private, Boolean,  :default => true
+      property   :id,      UUID,         :key => true, :default => lambda { |p,r| Configuration.random_uuid }
+      property   :name,    String,       :required => true
+      property   :options, Yaml,         :default => {}.to_yaml
+      property   :type,    Discriminator
+      property   :display, Boolean
+      property   :position, Integer
+      property   :description, Text
+      property   :created_at,   DateTime
+      property   :updated_at,   DateTime
+      property   :deleted_at,  ParanoidDateTime
+      property   :private, Boolean,  :default => true
       property   :data_collection_id, UUID
-      property  :original_uid, UUID, :required=>false
-      property :updated_comment,      Text,    :lazy=>false
-      property :provenance_comment,   Text, :required=>false, :required =>false
-      property :updated_by,           Integer, :lazy=>false, :required=>false
+      property   :original_uid, UUID, :required=>false
+      property   :updated_comment,      Text,    :lazy=>false
+      property   :provenance_comment,   Text, :required=>false, :required =>false
+      property   :updated_by,           Integer, :lazy=>false, :required=>false
       belongs_to :data_collection, :model => 'Yogo::Collection::Data'
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
       #has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
@@ -30,7 +32,7 @@ module Yogo
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
       before :save, :make_version
-      
+      before :save, :update_position
       
       #pulls all the versions of the current item
       #NOTE that a record that has just been created WILL have a version which is
@@ -99,6 +101,18 @@ module Yogo
       
       private
       
+      def update_position
+        # if my position has changed, continue!
+        if self.dirty_attributes.keys.include?('position')
+          sibs = self.data_collection.schema - self
+
+          # select all of my sibling properties ordered by position (not the string values)
+          # make my position in the list match my position
+          # save all properties out with their new positions, the string values should be the same
+
+        end
+      end
+
       #copies the pre-saved schema to a version and then deletes the schema
       #this will make a version for a newly created record 
       def make_version

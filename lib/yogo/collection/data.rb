@@ -28,7 +28,7 @@ module Yogo
       validates_uniqueness_of :name, :scope => :project_id
       #has n, :collection_associations, :model => "Yogo::CollectionAssociation", :child_key=> :source_collection_id
       #has n, :collections, self, :through => :collection_associations, :via => :target_collection
-      has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id]
+      has n, :schema, :model => 'Yogo::Collection::Property', :child_key => [:data_collection_id], :order => [:position]
       belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
       
       include Collection::Base
@@ -54,7 +54,15 @@ module Yogo
           self.attributes = attrs
         end
       end
+
+      def self.display
+        all(:display => true)
+      end
       
+      def self.raw
+        all(:display => false)
+      end
+
       protected
 
       def resolve_property(options)
