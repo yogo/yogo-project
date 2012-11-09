@@ -32,7 +32,6 @@ module Yogo
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
       before :save, :make_version
-      before :save, :update_position
       
       #pulls all the versions of the current item
       #NOTE that a record that has just been created WILL have a version which is
@@ -98,20 +97,27 @@ module Yogo
         class #{type} < Property; end
         }
       end
-      
-      private
-      
+
+      # updates the position of my sibling columns when my position is changed
+      # this needs to be called by the controller! When put into a callback
+      # hook, it results in an infinite callback loop as each updated sibling
+      # will call it on each other updated sibling... it never ends.
+      # TODO: there has got to be a way to do this with the model, figger it out, maybe
+      # use a semaphore or something "don't do an update_position if one is in progress"
+      # NOTE: if this does get turned into an automatic method, then make it 
+      # private again. :)
       def update_position
-        # if my position has changed, continue!
-        if self.dirty_attributes.keys.include?('position')
-          sibs = self.data_collection.schema - self
-
-          # select all of my sibling properties ordered by position (not the string values)
-          # make my position in the list match my position
-          # save all properties out with their new positions, the string values should be the same
-
+        props = self.data_collection.schema # => this should include me
+        props.delete(self)
+        props.insert(self.position, self)
+        props.compact!
+        props.each_with_index do |p, i|
+          next if p.position == i || p == self
+          p.update(:position => i)
         end
       end
+      
+      private
 
       #copies the pre-saved schema to a version and then deletes the schema
       #this will make a version for a newly created record 
