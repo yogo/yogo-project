@@ -112,8 +112,9 @@ module Yogo
         props.insert(self.position, self)
         props.compact!
         props.each_with_index do |p, i|
-          next if p.position == i || p == self
-          p.update(:position => i)
+          unless (p.position == i) || (p == self)
+            p.update(:position => i)
+          end
         end
       end
       
