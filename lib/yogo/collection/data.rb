@@ -16,7 +16,7 @@ module Yogo
       
       property :id,               UUID,       :key => true, :default => lambda { |p,r| Yogo::Configuration.random_uuid }
       property :name,             String,     :required => true
-      property :description,      String
+      property :description,      Text
       property :type,             Discriminator
       property   :project_id,     UUID
       belongs_to :project, :model => 'Yogo::Project'
