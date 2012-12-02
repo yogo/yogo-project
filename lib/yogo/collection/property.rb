@@ -91,7 +91,7 @@ module Yogo
         model.send(model_method, prop_name, prop_type, prop_options)
       end
       
-      COMMON_PROPERTIES = [:String, :Text, :Integer, :Float, :Boolean, :Date, :Time, :DateTime]
+      COMMON_PROPERTIES = [:String, :Text, :Integer, :Float, :Boolean, :Date, :DateTime]
       COMMON_PROPERTIES.each do |type|
         class_eval %{
         class #{type} < Property; end
