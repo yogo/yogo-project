@@ -9,26 +9,27 @@ module Yogo
     class Property
       include ::DataMapper::Resource
 
-      property   :id,      UUID,         :key => true, :default => lambda { |p,r| Configuration.random_uuid }
-      property   :name,    String,       :required => true
-      property   :options, Yaml,         :default => {}.to_yaml
-      property   :type,    Discriminator
-      property   :display, Boolean
-      property   :position, Integer
-      property   :description, Text
+      property   :id,           UUID,   :key => true,     :default => lambda { |p,r| Configuration.random_uuid }
+      property   :name,         String, :required => true
+      property   :options,      Yaml,                     :default => {}.to_yaml
+      property   :type,         Discriminator
+      property   :display,      Boolean
+      property   :position,     Integer
+      property   :description,  Text
       property   :created_at,   DateTime
       property   :updated_at,   DateTime
-      property   :deleted_at,  ParanoidDateTime
-      property   :private, Boolean,  :default => true
-      property   :data_collection_id, UUID
-      property   :original_uid, UUID, :required=>false
-      property   :updated_comment,      Text,    :lazy=>false
-      property   :provenance_comment,   Text, :required=>false, :required =>false
-      property   :updated_by,           Integer, :lazy=>false, :required=>false
-      belongs_to :data_collection, :model => 'Yogo::Collection::Data'
-      belongs_to :controlled_vocabulary, :model => 'Yogo::Collection::Property', :required => false
+      property   :deleted_at,   ParanoidDateTime
+      property   :private,      Boolean,                  :default => true
+      property   :data_collection_id,   UUID
+      property   :original_uid,         UUID,                       :required=>false
+      property   :updated_comment,      Text,     :lazy=>false
+      property   :provenance_comment,   Text,                       :required=>false
+      property   :updated_by,           Integer,  :lazy=>false,     :required=>false
+      belongs_to :data_collection,        :model => 'Yogo::Collection::Data'
+      belongs_to :controlled_vocabulary,  :model => 'Yogo::Collection::Property', :required => false
+      belongs_to :associated_schema,      :model => 'Yogo::Collection::Property', :required => false
+      belongs_to :associated_list_schema, :model => 'Yogo::Collection::Property', :required => false
       #has n, :collection_associations, :model =>"Yogo::CollectionAssociation", :child_key=>:schema_id
-      belongs_to :associated_schema, :model => 'Yogo::Collection::Property', :required => false
       # validates_uniqueness_of :name, :scope => :data_collection_id
       
       before :save, :make_version
