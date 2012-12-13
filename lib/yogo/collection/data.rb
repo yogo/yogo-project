@@ -18,6 +18,7 @@ module Yogo
       property :name,             String,     :required => true
       property :description,      Text
       property :type,             Discriminator
+      property :is_file,          Boolean, :default => false
       property   :project_id,     UUID
       belongs_to :project, :model => 'Yogo::Project'
       property :created_at,   DateTime
