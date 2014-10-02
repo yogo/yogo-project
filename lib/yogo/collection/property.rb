@@ -13,7 +13,8 @@ module Yogo
       property   :name,         String, :required => true
       property   :options,      Yaml,                     :default => {}.to_yaml
       property   :type,         Discriminator
-      property   :is_file,       Boolean, :default=> false
+      property   :is_file,      Boolean, :default=> false
+      property   :is_seafile,   Boolean, :default=> false
       property   :display,      Boolean
       property   :position,     Integer
       property   :description,  Text
