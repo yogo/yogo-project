@@ -1,3 +1,5 @@
+require 'dm-types'
+
 module Yogo
   module Collection
     class Data
