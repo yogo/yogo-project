@@ -10,9 +10,9 @@ module Yogo
     class Data
       module ModelProperties
         def self.extended(model)
-          include ::DataMapper::Resource
+          #include ::DataMapper::Resource
           model.class_eval do
-            property :id,           UUID, :key => true,  :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
+            property :id,           ::DataMapper::Property::UUID, :key => true,  :default => lambda { |p,r| UUIDTools::UUID.timestamp_create }
             property :created_at,   DateTime
             property :updated_at,   DateTime
             property :deleted_at,           ::DataMapper::Property::ParanoidDateTime
