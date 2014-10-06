@@ -1,4 +1,6 @@
+require 'dm-core'
 require 'dm-types'
+require 'uuidtools'
 
 module Yogo
   module Collection
