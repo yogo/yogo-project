@@ -3,7 +3,7 @@ require 'dm-types'
 require 'dm-types/uuid'
 require 'yogo/configuration'
 require 'uuidtools'
-
+require 'yogo/collection'
 
 module Yogo
   module Collection
