@@ -1,3 +1,4 @@
+require 'dm-types'
 require 'dm-core'
 
 require 'yogo/datamapper/adapters/postgres'

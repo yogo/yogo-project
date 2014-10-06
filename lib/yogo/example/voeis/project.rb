@@ -1,4 +1,5 @@
 require 'dm-core'
+require 'dm-types'
 require 'dm-types/uuid'
 
 require 'yogo/datamapper/repository_manager'
