@@ -5,8 +5,9 @@ module Yogo
         def to_s
           "CollectionItemModel[]"
         end
-        
-        
+        def name
+          "CollectionItemModel[]"
+        end
         
         module InstanceMethods
           def as_json(options=nil)
